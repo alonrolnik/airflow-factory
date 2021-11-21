@@ -1,3 +1,5 @@
+from airflow import DAG
+
 class AirflowDAGFactory:
     """Factory method for getting a DAG."""
 
@@ -10,6 +12,5 @@ class AirflowDAGFactory:
         return DAG(
             *keys,
             dagrun_timeout=kwargs.pop("dagrun_timeout", timedelta(hours=DAG_RUN_DEFAULT_TIMEOUT_HOURS)),
-            user_defined_macros={"make_safe_label_value": make_safe_label_value},
             **kwargs,
         )
